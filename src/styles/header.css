@@ -3,7 +3,7 @@
     top: 0;
     z-index: 10;
     backdrop-filter: blur(14px);
-    background: rgba(247, 248, 250, 0.82);
+    background: var(--header-bg);
     border-bottom: 1px solid var(--line);
 }
 
@@ -27,6 +27,13 @@
     gap: 0.24rem;
     white-space: nowrap;
     transition: gap 220ms ease;
+}
+
+
+.site-header__controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .site-mark__name {
@@ -63,7 +70,7 @@
     position: relative;
     padding: 0.72rem 0.4rem;
     color: var(--text-soft);
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
     font-size: 0.92rem;
     font-weight: 400;
     letter-spacing: 0;
@@ -71,6 +78,78 @@
         color var(--transition),
         font-weight var(--transition),
         padding 220ms ease;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.theme-toggle__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    transition:
+        transform var(--transition);
+}
+
+.theme-toggle__button:hover,
+.theme-toggle__button:focus-visible {
+    transform: translateY(-1px);
+}
+
+.theme-toggle__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0f1217 0 50%, #f7f8fa 50% 100%);
+}
+
+.theme-toggle__option {
+    border: 0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        color var(--transition),
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.theme-toggle__option:hover,
+.theme-toggle__option:focus-visible {
+    color: var(--text);
+}
+
+.theme-toggle__option.is-active {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.theme-toggle__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.6rem);
+    display: grid;
+    gap: 0.25rem;
+    min-width: 7rem;
+    padding: 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--card-bg);
 }
 
 .site-nav__link:hover,
@@ -113,6 +192,13 @@
         padding-top: 0.9rem;
         padding-bottom: 0.75rem;
     }
+
+    .site-header__controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
 
     .site-mark {
         gap: 0.1rem;

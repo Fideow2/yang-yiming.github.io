@@ -68,7 +68,7 @@
     background: linear-gradient(
         180deg,
         transparent 0%,
-        rgba(23, 27, 34, 0.04) 100%
+        var(--image-overlay) 100%
     );
     pointer-events: none;
 }

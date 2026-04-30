@@ -59,6 +59,7 @@
     transform: translateX(calc(-50% - 10px));
     animation: face-lr var(--move-duration) ease-in-out infinite;
     z-index: 2;
+    will-change: transform;
 }
 
 .hero-ghost .ghost-photo-face {
@@ -72,6 +73,7 @@
     transform: translateX(-150px);
     opacity: 0;
     z-index: 5;
+    will-change: transform, opacity;
 }
 
 .hero-ghost .ghost-photo-face__image {
@@ -88,6 +90,7 @@
     height: 12px;
     transform: translateX(-12px);
     animation: eye-lr var(--move-duration) ease-in-out infinite;
+    will-change: transform;
 }
 
 @keyframes face-delay-back {

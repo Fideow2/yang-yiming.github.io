@@ -1,7 +1,8 @@
-import { lazy, useEffect, useMemo, useState, Suspense } from "react";
+import { lazy, useEffect, useMemo, useRef, useState, Suspense } from "react";
 import { sections, siteMeta } from "../content";
 import { renderMarkdown } from "../lib/markdown";
 import type { SiteLink } from "../types";
+import type { GhostHandle } from "./Ghost";
 
 const Ghost = lazy(() =>
   import("./Ghost").then((m) => ({ default: m.Ghost })),
@@ -60,6 +61,11 @@ export function Hero({ ghostFaceSwapEnabled }: HeroProps) {
   const hasNotes = Boolean(home.items?.length);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const availableImages = useMemo(() => heroImages, [heroImages]);
+  const ghostRef = useRef<GhostHandle>(null);
+
+  const handleHeroClick = () => {
+    ghostRef.current?.trigger();
+  };
 
   useEffect(() => {
     if (availableImages.length < 2) {
@@ -87,6 +93,7 @@ export function Hero({ ghostFaceSwapEnabled }: HeroProps) {
     <section
       className={`hero section-frame${hasNotes ? "" : " hero--compact"}`}
       id="home"
+      onClick={handleHeroClick}
     >
       <div className="hero__masthead">
         <div className="hero__lead">
@@ -114,7 +121,7 @@ export function Hero({ ghostFaceSwapEnabled }: HeroProps) {
         </div>
 
         <Suspense fallback={null}>
-          <Ghost ghostFaceSwapEnabled={ghostFaceSwapEnabled} />
+          <Ghost ref={ghostRef} ghostFaceSwapEnabled={ghostFaceSwapEnabled} />
         </Suspense>
       </div>
 

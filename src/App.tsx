@@ -205,18 +205,12 @@ function getScrollTarget(
   };
 }
 
-interface HomeContentProps {
-  ghostFaceSwapEnabled: boolean;
-  onGhostFaceSwapChange: (enabled: boolean) => void;
-}
+interface HomeContentProps {}
 
-function HomeContent({
-  ghostFaceSwapEnabled,
-  onGhostFaceSwapChange,
-}: HomeContentProps) {
+function HomeContent(_props: HomeContentProps) {
   return (
     <main className="page-main">
-      <Hero ghostFaceSwapEnabled={ghostFaceSwapEnabled} />
+      <Hero />
       {sections
         .filter((section) => section.id !== "home")
         .map((section) => (
@@ -226,8 +220,6 @@ function HomeContent({
             <EditorialSection
               key={section.id}
               section={section}
-              ghostFaceSwapEnabled={ghostFaceSwapEnabled}
-              onGhostFaceSwapChange={onGhostFaceSwapChange}
             />
           )
         ))}
@@ -258,7 +250,7 @@ function App() {
   const [backgroundHomeRoute, setBackgroundHomeRoute] = useState<HomeRoute | null>(
     route.kind === "home" ? route : null,
   );
-  const [ghostFaceSwapEnabled, setGhostFaceSwapEnabled] = useState(false);
+
   const currentLocationKeyRef = useRef(getLocationKey(window.location));
   const scrollPositionsRef = useRef<Record<string, number>>({});
   const pendingScrollRef = useRef<ScrollTarget>(null);
@@ -526,10 +518,7 @@ function App() {
       return (
         <div className="page-shell">
           <SiteHeader activeSection={entry.collectionId} />
-          <HomeContent
-            ghostFaceSwapEnabled={ghostFaceSwapEnabled}
-            onGhostFaceSwapChange={setGhostFaceSwapEnabled}
-          />
+          <HomeContent />
           <div className="entry-overlay" role="dialog" aria-modal="true">
             <div className="entry-overlay__panel">
               <Suspense fallback={<EntryPageLoader />}>
@@ -563,10 +552,7 @@ function App() {
   return (
     <div className="page-shell">
       <SiteHeader activeSection={activeSection} isHome />
-      <HomeContent
-        ghostFaceSwapEnabled={ghostFaceSwapEnabled}
-        onGhostFaceSwapChange={setGhostFaceSwapEnabled}
-      />
+      <HomeContent />
     </div>
   );
 }

@@ -3,17 +3,13 @@ import type { SectionContent } from "../types";
 
 interface EditorialSectionProps {
   section: SectionContent;
-  ghostFaceSwapEnabled?: boolean;
-  onGhostFaceSwapChange?: (enabled: boolean) => void;
 }
 
 export function EditorialSection({
   section,
-  ghostFaceSwapEnabled = false,
-  onGhostFaceSwapChange,
 }: EditorialSectionProps) {
   const hasItems = Boolean(section.items?.length);
-  const showsGhostControl = section.id === "fun" && onGhostFaceSwapChange;
+  const showsGhostControl = section.id === "fun";
 
   return (
     <section className="editorial-section section-frame" id={section.id}>
@@ -45,17 +41,14 @@ export function EditorialSection({
           {showsGhostControl ? (
             <label className="fun-toggle">
               <span className="fun-toggle__copy">
-                <span className="fun-toggle__title">Ghost face shuffle</span>
+                <span className="fun-toggle__title">Ghost moving!</span>
                 <span className="fun-toggle__description">
-                  Let the little ghost borrow a random face sometimes.
+                  (in development)
                 </span>
               </span>
               <input
-                checked={ghostFaceSwapEnabled}
                 className="fun-toggle__input"
-                onChange={(event) => {
-                  onGhostFaceSwapChange(event.currentTarget.checked);
-                }}
+                disabled
                 type="checkbox"
               />
               <span className="fun-toggle__track" aria-hidden="true">

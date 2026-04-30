@@ -16,16 +16,11 @@ const ghostPhotoSources = Object.values(ghostPhotoModules) as string[];
 const FACE_DEFAULT_TRANSFORM = "translateX(calc(-50% - 10px))";
 const EYE_DEFAULT_TRANSFORM = "translateX(-12px)";
 
-interface GhostProps {
-  ghostFaceSwapEnabled: boolean;
-}
-
 export interface GhostHandle {
   trigger: () => void;
 }
 
-export const Ghost = forwardRef<GhostHandle, GhostProps>(
-  function Ghost({ ghostFaceSwapEnabled }, ref) {
+export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
     const [currentGhostPhoto, setCurrentGhostPhoto] = useState(
       ghostPhotoSources[0] ?? "",
     );
@@ -51,8 +46,7 @@ export const Ghost = forwardRef<GhostHandle, GhostProps>(
       isBusyRef.current = true;
 
       const eyes = [eyeL, eyeR];
-      const canShowPhoto =
-        ghostFaceSwapEnabled && ghostPhotoSources.length > 0;
+      const canShowPhoto = ghostPhotoSources.length > 0;
       const showPhoto = canShowPhoto && Math.random() > 0.5;
       const isHappy = showPhoto || Math.random() > 0.5;
 
@@ -68,28 +62,24 @@ export const Ghost = forwardRef<GhostHandle, GhostProps>(
           }
         }
 
-        if (ghostFaceSwapEnabled) {
-          face.style.setProperty("--face-start-pos", FACE_DEFAULT_TRANSFORM);
-          eyeContainer.style.setProperty(
-            "--eye-start-pos",
-            EYE_DEFAULT_TRANSFORM,
-          );
-          face.classList.add("face-happy-active");
-          eyeContainer.classList.add("eye-happy-active");
-          if (showPhoto) {
-            photoFace.classList.add("photo-happy-active");
-          }
+        face.style.setProperty("--face-start-pos", FACE_DEFAULT_TRANSFORM);
+        eyeContainer.style.setProperty(
+          "--eye-start-pos",
+          EYE_DEFAULT_TRANSFORM,
+        );
+        face.classList.add("face-happy-active");
+        eyeContainer.classList.add("eye-happy-active");
+        if (showPhoto) {
+          photoFace.classList.add("photo-happy-active");
         }
 
         eyes.forEach((eye) => eye.classList.add("happy"));
 
         window.setTimeout(() => {
           eyes.forEach((eye) => eye.classList.remove("happy"));
-          if (ghostFaceSwapEnabled) {
-            face.classList.remove("face-happy-active");
-            eyeContainer.classList.remove("eye-happy-active");
-            photoFace.classList.remove("photo-happy-active");
-          }
+          face.classList.remove("face-happy-active");
+          eyeContainer.classList.remove("eye-happy-active");
+          photoFace.classList.remove("photo-happy-active");
           isBusyRef.current = false;
         }, 6000);
 
@@ -105,7 +95,7 @@ export const Ghost = forwardRef<GhostHandle, GhostProps>(
         document.documentElement.style.setProperty("--move-duration", "5s");
         isBusyRef.current = false;
       }, 2600);
-    }, [ghostFaceSwapEnabled]);
+    }, []);
 
     useImperativeHandle(ref, () => ({ trigger }), [trigger]);
 

@@ -10,9 +10,7 @@ const Ghost = lazy(() =>
 
 const heroRotationDelay = 4800;
 
-interface HeroProps {
-  ghostFaceSwapEnabled: boolean;
-}
+interface HeroProps {}
 
 function LinkIcon({ icon }: { icon?: SiteLink["icon"] }) {
   if (icon === "github") {
@@ -54,7 +52,7 @@ function LinkIcon({ icon }: { icon?: SiteLink["icon"] }) {
   return null;
 }
 
-export function Hero({ ghostFaceSwapEnabled }: HeroProps) {
+export function Hero(_props: HeroProps) {
   const home = sections[0];
   const heroImages = siteMeta.heroImages;
   const hasLocation = Boolean(siteMeta.location.trim());
@@ -121,7 +119,7 @@ export function Hero({ ghostFaceSwapEnabled }: HeroProps) {
         </div>
 
         <Suspense fallback={null}>
-          <Ghost ref={ghostRef} ghostFaceSwapEnabled={ghostFaceSwapEnabled} />
+          <Ghost ref={ghostRef} />
         </Suspense>
       </div>
 

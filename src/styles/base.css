@@ -14,6 +14,7 @@
     --line-strong: rgba(23, 27, 34, 0.22);
     --accent: #3f6288;
     --accent-soft: rgba(63, 98, 136, 0.12);
+
     --header-bg: rgba(247, 248, 250, 0.82);
     --overlay-bg: rgba(247, 248, 250, 0.82);
     --card-bg: #ffffff;
@@ -48,6 +49,7 @@
         --line-strong: rgba(230, 235, 242, 0.22);
         --accent: #7ea3c6;
         --accent-soft: rgba(126, 163, 198, 0.16);
+    
         --header-bg: rgba(18, 22, 28, 0.78);
         --overlay-bg: rgba(11, 14, 19, 0.78);
         --card-bg: #151a22;
@@ -70,6 +72,7 @@
     --line-strong: rgba(23, 27, 34, 0.22);
     --accent: #3f6288;
     --accent-soft: rgba(63, 98, 136, 0.12);
+
     --header-bg: rgba(247, 248, 250, 0.82);
     --overlay-bg: rgba(247, 248, 250, 0.82);
     --card-bg: #ffffff;
@@ -91,6 +94,7 @@
     --line-strong: rgba(230, 235, 242, 0.22);
     --accent: #7ea3c6;
     --accent-soft: rgba(126, 163, 198, 0.16);
+
     --header-bg: rgba(18, 22, 28, 0.78);
     --overlay-bg: rgba(11, 14, 19, 0.78);
     --card-bg: #151a22;

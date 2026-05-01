@@ -363,3 +363,17 @@
     border-radius: 50%;
     background: transparent;
 }
+
+.hero-ghost.ghost-paused .ghost,
+.hero-ghost.ghost-paused .ghost-face,
+.hero-ghost.ghost-paused .ghost-eyes,
+.hero-ghost.ghost-paused .ghost-shadow,
+.hero-ghost.ghost-paused .sym {
+  animation-play-state: paused;
+}
+
+.hero-ghost.ghost-paused .face-happy-active,
+.hero-ghost.ghost-paused .photo-happy-active,
+.hero-ghost.ghost-paused .eye-happy-active {
+  animation-play-state: paused !important;
+}

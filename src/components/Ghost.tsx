@@ -1,6 +1,7 @@
 import {
   forwardRef,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -31,6 +32,7 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
     const eyeLRef = useRef<HTMLDivElement>(null);
     const eyeRRef = useRef<HTMLDivElement>(null);
     const isBusyRef = useRef(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const trigger = useCallback(() => {
       if (isBusyRef.current) return;
@@ -99,8 +101,24 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
 
     useImperativeHandle(ref, () => ({ trigger }), [trigger]);
 
+    useEffect(() => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          el.classList.toggle("ghost-paused", !entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+
+      observer.observe(el);
+
+      return () => observer.disconnect();
+    }, []);
+
     return (
-      <div className="hero-ghost" aria-hidden="true">
+      <div className="hero-ghost" aria-hidden="true" ref={containerRef}>
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>
             <clipPath id="gc" clipPathUnits="objectBoundingBox">

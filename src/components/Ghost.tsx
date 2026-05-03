@@ -117,15 +117,35 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
       return;
     }
 
-    // Angry reaction — fast jittery movement, then restore
+    // Angry reaction — fast jitter then smooth recover
     eyes.forEach((eye) => eye.classList.add("angry"));
     document.documentElement.style.setProperty("--move-duration", "0.6s");
 
     window.setTimeout(() => {
+      const fTrans = window.getComputedStyle(face).transform;
+      const eTrans = window.getComputedStyle(eyeContainer).transform;
+      face.style.animation = "none";
+      eyeContainer.style.animation = "none";
+      face.style.transform = fTrans;
+      eyeContainer.style.transform = eTrans;
+      face.offsetHeight; // force reflow so transition starts from frozen state
       eyes.forEach((eye) => eye.classList.remove("angry"));
-      document.documentElement.style.setProperty("--move-duration", "5s");
-      isBusyRef.current = false;
-    }, 2600);
+      const recoverTime = 0.6;
+      face.style.transition = `transform ${recoverTime}s ease-in-out`;
+      eyeContainer.style.transition = `transform ${recoverTime}s ease-in-out`;
+      face.style.transform = "translateX(calc(-50% - 10px))";
+      eyeContainer.style.transform = "translateX(-12px)";
+      window.setTimeout(() => {
+        document.documentElement.style.setProperty("--move-duration", "5s");
+        face.style.transition = "";
+        eyeContainer.style.transition = "";
+        face.style.animation = "";
+        eyeContainer.style.animation = "";
+        face.style.transform = "";
+        eyeContainer.style.transform = "";
+        isBusyRef.current = false;
+      }, recoverTime * 1000);
+    }, 2000);
   }, []);
 
   useImperativeHandle(ref, () => ({ trigger }), [trigger]);

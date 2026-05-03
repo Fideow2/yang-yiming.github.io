@@ -51,6 +51,16 @@ export const githubProjectGroups = [
         language: "Javascript",
         visibility: "Public",
       },
+      {
+        title: "Kimi Learn",
+        description:
+          "Some SKILL and a web app based on Wire API and Kimi CLI for my family to study.",
+        href: "https://github.com/Yang-Yiming/kimi-learn",
+        year: "2026",
+        // stars: "0",
+        language: "Python",
+        visibility: "Public",
+      },
     ],
   },
 ] satisfies GitHubProjectGroup[];

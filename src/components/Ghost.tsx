@@ -41,6 +41,7 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
   const eyeRRef = useRef<HTMLDivElement>(null);
   const isBusyRef = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastWasHappyRef = useRef<boolean | null>(null);
 
   const trigger = useCallback(() => {
     if (isBusyRef.current) return;
@@ -56,7 +57,18 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
     isBusyRef.current = true;
 
     const eyes = [eyeL, eyeR];
-    const isHappy = Math.random() > 0.5;
+
+    // Bias against repeating to keep the expression varied over time
+    // while maintaining an overall ~50/50 distribution.
+    let isHappy: boolean;
+    if (lastWasHappyRef.current === null) {
+      isHappy = Math.random() > 0.5;
+    } else if (lastWasHappyRef.current) {
+      isHappy = Math.random() > 0.7;
+    } else {
+      isHappy = Math.random() > 0.3;
+    }
+    lastWasHappyRef.current = isHappy;
 
     if (isHappy) {
       const canShowPhoto = ghostPhotoSources.length > 0;

@@ -14,6 +14,17 @@ const ghostPhotoModules = import.meta.glob(
 );
 const ghostPhotoSources = Object.values(ghostPhotoModules) as string[];
 
+const preloadedPhotos = new Map<string, HTMLImageElement>();
+
+function preloadPhoto(src: string) {
+  if (!src || preloadedPhotos.has(src)) return;
+  const img = new Image();
+  img.src = src;
+  preloadedPhotos.set(src, img);
+}
+
+ghostPhotoSources.forEach(preloadPhoto);
+
 const FACE_DEFAULT_TRANSFORM = "translateX(calc(-50% - 10px))";
 const EYE_DEFAULT_TRANSFORM = "translateX(-12px)";
 
@@ -49,15 +60,24 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
 
       const eyes = [eyeL, eyeR];
       const canShowPhoto = ghostPhotoSources.length > 0;
-      const showPhoto = canShowPhoto && Math.random() > 0.5;
+      let showPhoto = canShowPhoto && Math.random() > 0.5;
+
+      let nextPhoto = "";
+      if (showPhoto) {
+        nextPhoto =
+          ghostPhotoSources[
+            Math.floor(Math.random() * ghostPhotoSources.length)
+          ];
+        const preloaded = preloadedPhotos.get(nextPhoto);
+        if (!preloaded || !preloaded.complete) {
+          showPhoto = false;
+        }
+      }
+
       const isHappy = showPhoto || Math.random() > 0.5;
 
       if (isHappy) {
         if (showPhoto) {
-          const nextPhoto =
-            ghostPhotoSources[
-              Math.floor(Math.random() * ghostPhotoSources.length)
-            ];
           setCurrentGhostPhoto(nextPhoto);
           if (ghostPhotoRef.current) {
             ghostPhotoRef.current.src = nextPhoto;

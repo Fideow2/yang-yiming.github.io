@@ -93,14 +93,14 @@
     max-width: 58ch;
     color: var(--text-soft);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.9;
+    line-height: 1.75;
 }
 
 .entry-page__content {
     color: var(--text-soft);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1rem;
-    line-height: 1.95;
+    line-height: 1.75;
 }
 
 .entry-page__content [id] {

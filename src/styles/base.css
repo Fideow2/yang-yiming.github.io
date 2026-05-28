@@ -8,8 +8,8 @@
     --bg-surface: #fbfcfd;
     --bg-glow: rgba(63, 98, 136, 0.08);
     --text: #171b22;
-    --text-soft: #5d6675;
-    --text-muted: #7b8492;
+    --text-soft: #4a5568;
+    --text-muted: #6b7280;
     --line: rgba(23, 27, 34, 0.14);
     --line-strong: rgba(23, 27, 34, 0.22);
     --accent: #3f6288;
@@ -66,8 +66,8 @@
     --bg-surface: #fbfcfd;
     --bg-glow: rgba(63, 98, 136, 0.08);
     --text: #171b22;
-    --text-soft: #5d6675;
-    --text-muted: #7b8492;
+    --text-soft: #4a5568;
+    --text-muted: #6b7280;
     --line: rgba(23, 27, 34, 0.14);
     --line-strong: rgba(23, 27, 34, 0.22);
     --accent: #3f6288;
@@ -228,7 +228,7 @@ select {
     max-width: 60ch;
     color: var(--text-soft);
     font-size: 0.98rem;
-    line-height: 1.9;
+    line-height: 1.75;
 }
 
 .list-row__description {

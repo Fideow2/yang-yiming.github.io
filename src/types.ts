@@ -7,6 +7,8 @@ export type SectionId =
   | "fun";
 
 export type EntryCollectionId = "life" | "blog";
+export type EntryKind = "markdown" | "html" | "app" | "link";
+export type EntryOpenMode = "entry" | "iframe" | "native";
 
 export interface SectionItem {
   title: string;
@@ -71,7 +73,11 @@ export interface EntryFrontmatter {
 
 export interface EntryRecord extends EntryFrontmatter {
   collectionId: EntryCollectionId;
+  kind: EntryKind;
+  open: EntryOpenMode;
   slug: string;
   href: string;
-  content: string;
+  source?: string;
+  externalHref?: string;
+  content?: string;
 }

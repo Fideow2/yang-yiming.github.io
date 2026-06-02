@@ -348,6 +348,10 @@ function App() {
       const nextRoute = parseRoute(url);
       const nextKey = getLocationKey(url);
 
+      if (nextRoute.kind === "notFound") {
+        return;
+      }
+
       event.preventDefault();
       scrollPositionsRef.current[currentLocationKeyRef.current] = window.scrollY;
 

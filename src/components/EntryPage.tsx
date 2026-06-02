@@ -1,3 +1,4 @@
+import { renderEntryHtml } from "../lib/html";
 import { renderEntryMarkdown } from "../lib/entryMarkdown";
 import type { EntryRecord } from "../types";
 
@@ -8,6 +9,10 @@ interface EntryPageProps {
 export function EntryPage({ entry }: EntryPageProps) {
   const collectionLabel =
     entry.collectionId.charAt(0).toUpperCase() + entry.collectionId.slice(1);
+  const embeddedHref = entry.externalHref ?? entry.source;
+  const shouldEmbed = entry.open === "iframe" && embeddedHref;
+  const shouldShowNativeLink =
+    (entry.open === "native" || entry.kind === "link") && embeddedHref;
 
   return (
     <main className="page-main">
@@ -26,9 +31,34 @@ export function EntryPage({ entry }: EntryPageProps) {
         </div>
 
         <div
-          className="entry-page__content"
-          dangerouslySetInnerHTML={renderEntryMarkdown(entry.content)}
-        />
+          className={
+            shouldEmbed
+              ? "entry-page__content entry-page__content--embed"
+              : "entry-page__content"
+          }
+        >
+          {entry.kind === "markdown" && entry.content ? (
+            <div dangerouslySetInnerHTML={renderEntryMarkdown(entry.content)} />
+          ) : null}
+
+          {entry.kind === "html" && entry.open === "entry" && entry.content ? (
+            <div dangerouslySetInnerHTML={renderEntryHtml(entry.content)} />
+          ) : null}
+
+          {shouldEmbed ? (
+            <iframe
+              className="entry-page__frame"
+              src={embeddedHref}
+              title={entry.title}
+            />
+          ) : null}
+
+          {shouldShowNativeLink ? (
+            <p>
+              <a href={embeddedHref}>Open {entry.title}</a>
+            </p>
+          ) : null}
+        </div>
       </article>
     </main>
   );

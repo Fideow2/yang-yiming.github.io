@@ -111,7 +111,15 @@
     margin-top: 0;
 }
 
+.entry-page__content > div > :first-child {
+    margin-top: 0;
+}
+
 .entry-page__content > :last-child {
+    margin-bottom: 0;
+}
+
+.entry-page__content > div > :last-child {
     margin-bottom: 0;
 }
 
@@ -216,6 +224,20 @@
 
 .entry-page__content .entry-math--block {
     margin: 1.2rem 0;
+}
+
+.entry-page__content--embed {
+    width: min(100vw - 2rem, 1120px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.entry-page__frame {
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - var(--nav-height) - 8rem);
+    border: 1px solid var(--line);
+    background: var(--bg-surface);
 }
 
 @media (max-width: 640px) {

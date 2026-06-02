@@ -1,0 +1,10 @@
+[[entries]]
+slug = "process-of-survival-analysis"
+title = "Process of Survival Analysis"
+summary = "STA323 course project 1, an example of survival analaysis using PySpark."
+meta = "April 2026"
+date = "2026-04-18"
+kicker = "Blog / 01"
+kind = "markdown"
+open = "entry"
+source = "./process-of-survival-analysis/index.md"

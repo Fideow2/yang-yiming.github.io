@@ -7,6 +7,7 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import { resolveEntryAssetUrls } from "./entryAssets";
 
 const entryMarkdownProcessor = unified()
   .use(remarkParse)
@@ -21,9 +22,9 @@ const entryMarkdownProcessor = unified()
     allowDangerousHtml: true,
   });
 
-export function renderEntryMarkdown(markdown: string) {
+export function renderEntryMarkdown(markdown: string, assetBase?: string) {
   const rawHtml = String(entryMarkdownProcessor.processSync(markdown));
   return {
-    __html: DOMPurify.sanitize(rawHtml),
+    __html: DOMPurify.sanitize(resolveEntryAssetUrls(rawHtml, assetBase)),
   };
 }

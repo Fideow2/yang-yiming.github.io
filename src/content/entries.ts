@@ -253,6 +253,7 @@ function resolveBlogEntry(entry: BlogManifestEntry) {
     open,
     slug: entry.slug,
     href,
+    assetBase: `/blog/${entry.slug}/`,
     source: entry.href ?? source,
     externalHref: entry.href,
     content,

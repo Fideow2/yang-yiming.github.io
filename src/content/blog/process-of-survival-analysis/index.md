@@ -11,15 +11,15 @@ Applying the Kaplan-Meier estimator with _tenure_ as the time variable and _chur
 <figure id="fig:q2plots">
   <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; align-items:start;">
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/Kaplan-Meier.jpg" alt="Result of Kaplan-Meier fit" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/Kaplan-Meier.jpg" alt="Result of Kaplan-Meier fit" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(a) Result of Kaplan-Meier fit.</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/KM-gender.jpg" alt="KM fit on Gender" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/KM-gender.jpg" alt="KM fit on Gender" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(b) KM fit on Gender</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/KM-paymentmethod.jpg" alt="KM fit on Payment Methods" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/KM-paymentmethod.jpg" alt="KM fit on Payment Methods" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(c) KM fit on Payment Methods</figcaption>
     </figure>
   </div>
@@ -46,11 +46,11 @@ Taken together, the three checks consistently indicate that the proportional haz
 <figure id="fig:cox-schoenfeld">
   <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1rem; align-items:start;">
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2schoenfeld_1.jpg" alt="Plots for dependents" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2schoenfeld_1.jpg" alt="Plots for dependents" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(a) Plots for _dependents_</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2schoenfeld_2.jpg" alt="Plots for InternetService" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2schoenfeld_2.jpg" alt="Plots for InternetService" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(b) Plots for _InternetService_</figcaption>
     </figure>
   </div>
@@ -60,19 +60,19 @@ Taken together, the three checks consistently indicate that the proportional haz
 <figure id="fig:q2loglog">
   <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:1rem; align-items:start;">
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogkm1.jpg" alt="online backup" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogkm1.jpg" alt="online backup" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(a) online backup</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogkm2.jpg" alt="dependents" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogkm2.jpg" alt="dependents" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(b) dependents</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogkm3.jpg" alt="internet service" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogkm3.jpg" alt="internet service" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(c) internet service</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogkm4.jpg" alt="tech support" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogkm4.jpg" alt="tech support" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(d) tech support</figcaption>
     </figure>
   </div>
@@ -90,15 +90,15 @@ To assess whether the log-logistic distribution is an appropriate choice, we exa
 <figure id="fig:loglogAFT">
   <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; align-items:start;">
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogpartner.jpg" alt="partner" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogpartner.jpg" alt="partner" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(a) partner</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2loglogmultiplelines.jpg" alt="multiple lines" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2loglogmultiplelines.jpg" alt="multiple lines" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(b) multiple lines</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/q2logloginternetservice.jpg" alt="internet service" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/q2logloginternetservice.jpg" alt="internet service" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(c) internet service</figcaption>
     </figure>
   </div>
@@ -118,11 +118,11 @@ Overall, this analysis demonstrates that survival analysis provides a principled
 <figure id="fig:customerlifetimevalue">
   <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1rem; align-items:start;">
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/survivalprobabilitycurve.jpg" alt="Survival Probability Curve Chart" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/survivalprobabilitycurve.jpg" alt="Survival Probability Curve Chart" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(a) Survival Probability Curve Chart</figcaption>
     </figure>
     <figure style="margin:0;">
-      <img src="/assets/blog/process-of-survival-analysis/cumulativenpv.jpg" alt="Cumulative NPV chart" style="width:100%; height:auto; display:block;" />
+      <img src="./assets/cumulativenpv.jpg" alt="Cumulative NPV chart" style="width:100%; height:auto; display:block;" />
       <figcaption style="text-align:center;">(b) Cumulative NPV chart</figcaption>
     </figure>
   </div>

@@ -77,6 +77,7 @@ export interface EntryRecord extends EntryFrontmatter {
   open: EntryOpenMode;
   slug: string;
   href: string;
+  assetBase?: string;
   source?: string;
   externalHref?: string;
   content?: string;

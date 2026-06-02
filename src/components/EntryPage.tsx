@@ -38,11 +38,21 @@ export function EntryPage({ entry }: EntryPageProps) {
           }
         >
           {entry.kind === "markdown" && entry.content ? (
-            <div dangerouslySetInnerHTML={renderEntryMarkdown(entry.content)} />
+            <div
+              dangerouslySetInnerHTML={renderEntryMarkdown(
+                entry.content,
+                entry.assetBase,
+              )}
+            />
           ) : null}
 
           {entry.kind === "html" && entry.open === "entry" && entry.content ? (
-            <div dangerouslySetInnerHTML={renderEntryHtml(entry.content)} />
+            <div
+              dangerouslySetInnerHTML={renderEntryHtml(
+                entry.content,
+                entry.assetBase,
+              )}
+            />
           ) : null}
 
           {shouldEmbed ? (

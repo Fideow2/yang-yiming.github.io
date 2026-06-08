@@ -230,7 +230,6 @@ export const Ghost = forwardRef<GhostHandle>(function Ghost(_props, ref) {
             <div></div>
           </div>
         </div>
-        <div className="ghost-shadow"></div>
       </div>
     </div>
   );

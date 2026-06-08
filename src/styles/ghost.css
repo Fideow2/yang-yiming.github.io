@@ -282,28 +282,6 @@
     top: -2px;
 }
 
-.hero-ghost .ghost-shadow {
-    position: absolute;
-    left: 50%;
-    bottom: 133px;
-    width: 78px;
-    height: 4px;
-    border-radius: 50%;
-    box-shadow: 0 0 20px 11px rgba(210, 190, 185, 0.4);
-    animation: shadow-pulse 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes shadow-pulse {
-    from {
-        transform: translateX(-50%) scaleX(0.8);
-        opacity: 0.25;
-    }
-    to {
-        transform: translateX(-50%) scaleX(1.05);
-        opacity: 0.55;
-    }
-}
-
 .hero-ghost .sym {
     position: absolute;
     opacity: 0.2;
@@ -367,7 +345,6 @@
 .hero-ghost.ghost-paused .ghost,
 .hero-ghost.ghost-paused .ghost-face,
 .hero-ghost.ghost-paused .ghost-eyes,
-.hero-ghost.ghost-paused .ghost-shadow,
 .hero-ghost.ghost-paused .sym {
   animation-play-state: paused;
 }

@@ -38,12 +38,10 @@ export function Wave({ pathRef }: WaveProps) {
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="wave-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" style={{ stopColor: "var(--bg-surface)" }} />
-          <stop offset="100%" style={{ stopColor: "var(--bg)" }} />
-        </linearGradient>
+        <clipPath id="wave-clip">
+          <path ref={pathRef} d={PATH_FLAT} />
+        </clipPath>
       </defs>
-      <path ref={pathRef} d={PATH_FLAT} fill="url(#wave-grad)" />
     </svg>
   );
 }

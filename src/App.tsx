@@ -5,6 +5,7 @@ import { Landing } from "./components/Landing";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { SiteHeader } from "./components/SiteHeader";
+import { interpolateWavePath } from "./components/Wave";
 import { getEntry, sections } from "./content";
 import type { EntryCollectionId, SectionId } from "./types";
 
@@ -259,6 +260,7 @@ function App() {
 
   const snapLockRef = useRef(false);
   const animationFrameRef = useRef(0);
+  const wavePathRef = useRef<SVGPathElement | null>(null);
 
   const performSnap = (target: 0 | 1) => {
     if (snapLockRef.current) return;
@@ -325,6 +327,10 @@ function App() {
         "--landing-progress",
         String(progress),
       );
+
+      if (wavePathRef.current) {
+        wavePathRef.current.setAttribute("d", interpolateWavePath(progress));
+      }
     };
 
     updateLandingProgress();
@@ -682,7 +688,7 @@ function App() {
   return (
     <div className="page-shell page-shell--has-landing">
       <SiteHeader activeSection={activeSection} isHome />
-      <Landing onEnter={() => performSnap(1)} />
+      <Landing onEnter={() => performSnap(1)} pathRef={wavePathRef} />
       <HomeContent />
     </div>
   );

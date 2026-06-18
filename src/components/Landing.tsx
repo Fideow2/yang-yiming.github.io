@@ -1,10 +1,13 @@
+import type { RefObject } from "react";
 import { siteMeta } from "../content";
+import { Wave } from "./Wave";
 
 interface LandingProps {
   onEnter?: () => void;
+  pathRef: RefObject<SVGPathElement | null>;
 }
 
-export function Landing({ onEnter }: LandingProps) {
+export function Landing({ onEnter, pathRef }: LandingProps) {
   return (
     <section className="landing" aria-label="Intro">
       <div className="landing__content">
@@ -21,6 +24,7 @@ export function Landing({ onEnter }: LandingProps) {
         <span>Scroll</span>
         <span className="landing__hint-arrow">↓</span>
       </button>
+      <Wave pathRef={pathRef} />
     </section>
   );
 }

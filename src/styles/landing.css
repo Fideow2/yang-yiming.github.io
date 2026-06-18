@@ -109,6 +109,10 @@
   transform: translateY(calc((1 - var(--landing-progress, 0)) * 3rem));
 }
 
+.page-shell--has-landing .page-main .section-frame:first-child {
+  border-top: 0;
+}
+
 .page-shell--has-landing .site-header {
   opacity: clamp(0, calc((var(--landing-progress, 0) - 0.4) * 2.5), 1);
   transform: translateY(
